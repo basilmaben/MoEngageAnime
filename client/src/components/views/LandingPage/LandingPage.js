@@ -1,12 +1,20 @@
-import React from 'react'
-import { FaCode } from "react-icons/fa";
-
+import React, { useEffect } from 'react'
+import {API_URL} from '../../Config'
 function LandingPage() {
+
+    useEffect(() => {
+
+        fetch(`${API_URL}`)
+            .then(response => response.json())
+            .then(response => {
+                console.log(response)
+            })
+            
+    }, [])
+
     return (
         <>
             <div className="app">
-                <FaCode style={{ fontSize: '4rem', color:'white' }} /><br />
-                <span style={{ fontSize: '2rem' ,color:'white' }}>Let's Start Coding!</span>
             </div>
         </>
     )
