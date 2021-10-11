@@ -1,0 +1,97 @@
+@import '~antd/dist/antd.css';
+
+.menu {
+  padding: 0 20px;
+  border-bottom: solid 1px #000000;
+  overflow: auto;
+  box-shadow: 0 0 30px #000000;
+  background-color: #000000;
+}
+
+.menu__logo {
+  width: 150px;
+  float: left;
+  background-color: black;
+  margin-left: 50px;
+}
+
+.menu__logo a {
+  display: inline-block;
+  font-size: 0px;
+  padding: 5px 5px;
+}
+
+.menu__container .ant-menu-item {
+  padding: 0px 5px;
+  background-color: black;
+  
+}
+
+.menu__container .ant-menu-submenu-title {
+  padding: 10px 20px;
+}
+
+.menu__container .ant-menu-item a,
+.menu__container .ant-menu-submenu-title a {
+  padding: 10px 15px;
+}
+
+.menu__container .ant-menu-horizontal {
+  border-bottom: none;
+}
+
+.menu__container .menu_left {
+  float: left;
+  background-color: black;
+}
+
+.menu__container .menu_rigth {
+  float: right;
+  background-color: #000000;
+  margin-top: 50px;
+  padding-right: 50px;
+}
+
+.menu__mobile-button {
+  float: right;
+  height: 32px;
+  padding: 6px;
+  margin-top: 30px;
+  display: none !important; 
+  background: #1DB954;
+  
+}
+
+.menu_drawer .ant-drawer-body {
+  padding: 0 !important;
+  }
+
+.menu_drawer .ant-drawer-header {
+  padding: 14px 24px !important;
+}
+
+@media (max-width: 767px) {
+  .menu__mobile-button {
+    display: inline-block !important;
+  }
+
+  .menu_left,
+  .menu_rigth {
+    display: none;
+    background-color: #000000;
+  }
+
+  .menu__logo a {
+    margin-left: -20px;
+  }
+
+  .menu__container .ant-menu-item,
+  .menu__container .ant-menu-submenu-title {
+    padding: 1px 20px;
+  }
+
+  .menu__logo a {
+    padding: 10px 20px;
+  }
+}
+
