@@ -9,4 +9,4 @@ In server/
 ```npm install```
 
 In MoEngage/
-```npm run dev``
+```npm run dev```
