@@ -5,6 +5,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { Form, Input, Icon, Button, Checkbox, Typography } from 'antd';
 import { useDispatch } from "react-redux";
+/* import '../LandingPage/Search.css' */
 
 const { Title } = Typography;
 
@@ -71,12 +72,12 @@ function LoginPage(props) {
           values,
           touched,
           errors,
-         /*  dirty, */
+          dirty,
           isSubmitting,
           handleChange,
           handleBlur,
           handleSubmit,
-         /*  handleReset, */
+          handleReset,
         } = props;
         return (
           <div className="app">
@@ -87,8 +88,8 @@ function LoginPage(props) {
               <Form.Item required>
                 <Input
                   id="email"
-                  prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                  placeholder="Enter your email"
+                  /* prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} */
+                  placeholder="Enter your Email"
                   type="email"
                   value={values.email}
                   onChange={handleChange}
@@ -105,7 +106,7 @@ function LoginPage(props) {
               <Form.Item required>
                 <Input
                   id="password"
-                  prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                  /* prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} */
                   placeholder="Enter your password"
                   type="password"
                   value={values.password}
@@ -129,8 +130,8 @@ function LoginPage(props) {
                 <a className="login-form-forgot" href="/reset_user" style={{ float: 'right' }}>
                   Forgot Password
                   </a>
-                <div>
-                  <Button type="primary" htmlType="submit" className="login-form-button" style={{ minWidth: '100%' , background: '#1DB954', borderColor:'black' }} disabled={isSubmitting} onSubmit={handleSubmit}>
+                <div className="login-button">
+                  <Button type="primary" htmlType="submit" className="login-form-button" style={{ minWidth: '100%' , background: 'black', borderColor:'white'}} disabled={isSubmitting} onSubmit={handleSubmit}>
                     Log in
                 </Button>
                 </div>

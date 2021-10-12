@@ -1,23 +1,74 @@
-import React, { useEffect } from 'react'
-import {API_URL} from '../../Config'
-function LandingPage() {
+import * as React from "react";
+import { useState} from "react";
+import Details from "./Details";
+import "./Search.css";
+import Card from "./Card";
 
-    useEffect(() => {
+export default function FreeSolo() {
+  const [animelist, setAnimelist] = useState([]);
+  const [topanime, settopAnime] = useState([]);
+  const [search, setSearch] = useState("");
+  const [temp, setTemp] = useState({});
+    const { flag } = temp;
+    
+  const get100anime = async () => {
+    const temp = await fetch("https://api.aniapi.com/v1/anime").then((res) =>
+      res.json()
+    );
 
-        fetch(`${API_URL}`)
-            .then(response => response.json())
-            .then(response => {
-                console.log(response)
-            })
-            
-    }, [])
+    settopAnime(temp.data.documents.slice(0, 8));
+    // console.log(temp.data.documents)
+  };
 
-    return (
+  const HandleSearch = (e) => {
+    e.preventDefault();
+    fetchAnime(search);
+    console.log(search);
+  };
+  const fetchAnime = async (query) => {
+    const temp = await fetch(
+      `https://api.aniapi.com/v1/anime?title=${query}&order_by=title&sort=asc&limit=10`
+    ).then((res) => res.json());
+    console.log(temp.data.documents);
+    setAnimelist(temp.data.documents);
+  };
+
+  React.useEffect(() => {
+    get100anime();
+    // console.log("useEffect");
+  }, []);
+
+  const getCreat = (e) => {
+    setTemp(e);
+    console.log(e.detail);
+    return e;
+  };
+  return (
+    <>
+      {flag ? (
+        <Details detail={temp.detail} />
+      ) : (
         <>
-            <div className="app">
-            </div>
+          <div className="search_bar">
+            <form className="search-box" onSubmit={HandleSearch}>
+              <input
+                className="input-search"
+                type="search"
+                placeholder=" Search Anime"
+                value={search}
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                }}
+              />
+            </form>
+          </div>
+          <Card
+            topanime={topanime}
+            animelist={animelist}
+            createtemp={getCreat}
+          />
         </>
-    )
+      )}
+    </>
+  );
 }
-
-export default LandingPage
